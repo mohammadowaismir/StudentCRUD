@@ -1,24 +1,24 @@
 ﻿@page
-@model StudentCRUD.Web.Pages.Students.CreateModel
+@model StudentCRUD.Web.Pages.Students.UpdateModel
 
 
 <div class="container px-4 py-4">
     <form method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+        <input hidden asp-for="Student.Id" />
         <div class="form-group">
             <label asp-for="Student.Name" class="form-label"></label>
-            <input asp-for="Student.Name" class="form-control" placeholder="Enter Name......">
+            <input asp-for="Student.Name" class="form-control" placeholder="Update Name......">
             <span asp-validation-for="Student.Name" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Student.Address" class="form-label"></label>
-            <input asp-for="Student.Address" class="form-control" placeholder="Enter Address.....">
+            <input asp-for="Student.Address" class="form-control" placeholder="Update Address.....">
             <span asp-validation-for="Student.Address" class="text-danger"></span>
         </div>
         <br />
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 

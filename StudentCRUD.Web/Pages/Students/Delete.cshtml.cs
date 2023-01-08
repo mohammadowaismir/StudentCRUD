@@ -1,28 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StudentCRUD.Web.Models;
 using StudentCRUD.Web.StudentDBContext;
 
 namespace StudentCRUD.Web.Pages.Students
 {
-    public class CreateModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly StudentDbContext db;
 
-        public CreateModel(StudentDbContext db)
+        public DeleteModel(StudentDbContext db)
         {
             this.db = db;
         }
-
-        [BindProperty]
-        public Student Student { get; set; }
-        public void OnGet()
+        public IActionResult OnGet(Guid id)
         {
-        }
-
-        public IActionResult OnPost() 
-        {
-            db.Students.Add(Student);
+            db.Remove(db.Students.Where(x => x.Id == id).FirstOrDefault());
             db.SaveChanges();
 
             return RedirectToPage("Index");
